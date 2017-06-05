@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Api } from './api';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
+
 import * as firebase from 'firebase/app';
 
 import 'rxjs/add/operator/map';
@@ -30,7 +30,7 @@ import 'rxjs/add/operator/toPromise';
 export class User {
   _user: any;
 
-  constructor(public http: Http, public api: Api, public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
     afAuth.authState.subscribe((user: firebase.User) => this._user = user);
   }
 
@@ -46,7 +46,15 @@ export class User {
    * the user entered on the form.
    */
   signup(accountInfo: any) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(accountInfo.email, accountInfo.password);;
+    var db = this.db;
+    return this.afAuth.auth.createUserWithEmailAndPassword(accountInfo.email, accountInfo.password)
+      .then((response)=>{
+        var uuid: string = response.uid;
+        var newUser: FirebaseObjectObservable<any> = db.object('/users/' + uuid + "/");
+        var newUserData =  { name: accountInfo.name };
+        newUser.set(newUserData);
+        // TODO resolve when new promise is resolved
+      })
   }
 
   /**
