@@ -1,0 +1,69 @@
+
+{
+  "BACK_BUTTON_TEXT": "Înapoi",
+
+  "NAME": "Nume",
+  "EMAIL": "E-mail",
+  "USERNAME": "Nume de utilizator",
+  "PASSWORD": "Parola",
+  "LOGIN": "Conectați-vă",
+  "SIGNUP": "Înscrieți-vă",
+
+  "TAB1_TITLE": "Elemente",
+  "TAB2_TITLE": "Căutare",
+  "TAB3_TITLE": "Setări",
+
+  "MAP_TITLE": "Hartă",
+
+  "TUTORIAL_SKIP_BUTTON": "Sari peste",
+  "TUTORIAL_CONTINUE_BUTTON": "Continuați",
+
+  "TUTORIAL_SLIDE1_TITLE": "Bine ați venit la Dent Alert",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b> Dent Alert </ b> este un cheia catre doctorul tau stomatolog.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Cum se utilizează Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Asamblați diferitele tipuri de pagini pe care le doriți și eliminați cele pe care nu le aveți. Am furnizat numeroase machete de pagini comune pentru aplicații mobile, cum ar fi pagini de conectare și înscriere, file și această pagină de instruire.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Noțiuni de bază",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Aveți nevoie de ajutor? Verificați README pentru Starter Super pentru un tutorial complet",
+
+  "TUTORIAL_SLIDE4_TITLE": "Esti gata?",
+
+  "WELCOME_INTRO": "Creeaza un cont nou sau conectează-te dacă ai deja unul.",
+
+  "SETTINGS_TITLE": "Setări",
+  "SETTINGS_OPTION1": "Opțiunea 1",
+  "SETTINGS_OPTION2": "Opțiunea 2",
+  "SETTINGS_OPTION3": "Opțiunea 3",
+  "SETTINGS_OPTION4": "Opțiunea 4",
+
+  "SETTINGS_PROFILE_BUTTON": "Editați profilul",
+
+  "SETTINGS_PAGE_PROFILE": "Editați profilul",
+
+  "WELCOME_TITLE": "Bun venit",
+
+  "LOGIN_TITLE": "Conectați-vă",
+  "LOGIN_ERROR": "Imposibil de conectat. Verificați informațiile contului dvs. și încercați din nou.",
+  "LOGIN_BUTTON": "Conectați-vă",
+  "SIGNUP_TITLE": "Înscrie-te",
+  "SIGNUP_ERROR": "Imposibil de creat cont. Verificați informațiile contului dvs. și încercați din nou.",
+  "SIGNUP_BUTTON": "Înscrie-te",
+
+  "LIST_MASTER_TITLE": "Dentisti",
+
+  "ITEM_CREATE_TITLE": "Element nou",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Adăugați imaginea",
+
+  "ITEM_NAME_PLACEHOLDER": "Nume",
+  "ITEM_ABOUT_PLACEHOLDER": "Despre",
+
+  "DONE_BUTTON": "Efectuat",
+  "CANCEL_BUTTON": "Anulare",
+  "DELETE_BUTTON": "Șterge",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Căutare",
+  "SEARCH_PLACEHOLDER": "Căutați lista de articole, de exemplu: Donald Duck"
+}
