@@ -18,6 +18,8 @@ Excluded from Github.
 ## Links
 
 <a href="https://docs.google.com/spreadsheets/d/1nbgjsu3XeM7Re9caJkHFLyMHaD4EgVW7b1eYo7jC3rQ/edit#gid=0"> Dashboard </a>
+<br>
 <a href="https://console.firebase.google.com/project/dent-alert/overview"> Firebase </a>
+<br>
 <a href="https://ionicframework.com/docs/"> Ionic Docs </a>
 
