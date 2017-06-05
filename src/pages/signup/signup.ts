@@ -15,10 +15,11 @@ export class SignupPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { name: string, email: string, password: string } = {
+  account: { name: string, email: string, password: string, type: string} = {
     name: '',
     email: '',
-    password: ''
+    password: '',
+    type: "doctor"
   };
 
   // Our translated text strings
@@ -32,6 +33,11 @@ export class SignupPage {
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
     })
+  }
+
+  toggleUser() {
+
+    
   }
 
   doSignup() {

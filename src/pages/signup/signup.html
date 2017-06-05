@@ -4,10 +4,28 @@
     <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
   </ion-navbar>
 
+
 </ion-header>
 
 
 <ion-content>
+
+   <ion-segment padding [(ngModel)]="account.type" color="primary" >
+    <ion-segment-button value="doctor">
+     {{ 'DENTIST' | translate }}
+    </ion-segment-button>
+    <ion-segment-button value="patient">
+   {{ 'PACIENT' | translate }}
+    </ion-segment-button>
+  </ion-segment>
+
+
+   <div class="userWrapper" [ngSwitch]="account.type">
+     <div class="doctor-bg"  *ngSwitchCase="'doctor'"></div>
+     <div class="client-bg"  *ngSwitchCase="'patient'"></div>
+  </div>
+
+
   <form (submit)="doSignup()">
     <ion-list>
 
@@ -34,6 +52,9 @@
         <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
+
+    
+
 
       <div padding>
         <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>

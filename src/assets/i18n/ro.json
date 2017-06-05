@@ -65,5 +65,8 @@
   "CARDS_TITLE": "Social",
 
   "SEARCH_TITLE": "Căutare",
-  "SEARCH_PLACEHOLDER": "Căutați lista de articole, de exemplu: Donald Duck"
+  "SEARCH_PLACEHOLDER": "Căutați lista de articole, de exemplu: Donald Duck",
+
+  "DENTIST": "Dentist",
+  "PACIENT": "Pacient"
 }

@@ -1,3 +1,26 @@
 page-signup {
 
+    .userWrapper{
+        height:50%
+    }
+
+    .client-bg,
+    .doctor-bg {
+    position: relative;
+    background: url('../assets/img/dentist.jpg') no-repeat transparent;
+    background-size: cover;
+    height: 100%;
+    z-index: 1;
+    background-repeat: repeat-x;
+  }
+
+  .client-bg{
+    background: url('../assets/img/client.jpg') no-repeat transparent;
+  }
+
+  ion-toggle{
+      margin: auto; 
+      zoom: 2;
+  }
+
 }
