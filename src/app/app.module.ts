@@ -35,6 +35,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase} from 'angularfire2/database';
 import { environment } from '../providers/firebase';
 
 
@@ -102,6 +103,7 @@ export function providers() {
     SplashScreen,
     StatusBar,
     AngularFireAuth,
+    AngularFireDatabase,
 
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
