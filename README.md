@@ -13,3 +13,11 @@ The Ionic Super Starter is a batteries-included starter project for Ionic apps c
 
 Firebase connection details - /providers/firebase.ts exports 'environment' variable.
 Excluded from Github.
+
+
+## Links
+
+<a href="https://docs.google.com/spreadsheets/d/1nbgjsu3XeM7Re9caJkHFLyMHaD4EgVW7b1eYo7jC3rQ/edit#gid=0"> Dashboard </a>
+<a href="https://console.firebase.google.com/project/dent-alert/overview"> Firebase </a>
+<a href="https://ionicframework.com/docs/"> Ionic Docs </a>
+
