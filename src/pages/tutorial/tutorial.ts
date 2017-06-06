@@ -5,6 +5,7 @@ import { WelcomePage } from '../welcome/welcome';
 
 import { TranslateService } from '@ngx-translate/core';
 
+import { Storage } from '@ionic/storage';
 
 
 export interface Slide {
@@ -21,7 +22,7 @@ export class TutorialPage {
   slides: Slide[];
   showSkip = true;
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService) {
+  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, private storage: Storage) {
     translate.get(["TUTORIAL_SLIDE1_TITLE",
       "TUTORIAL_SLIDE1_DESCRIPTION",
       "TUTORIAL_SLIDE2_TITLE",
@@ -42,6 +43,7 @@ export class TutorialPage {
   }
 
   startApp() {
+    this.storage.set('doNotShowTutorial', true);
     this.navCtrl.setRoot(WelcomePage, {}, {
       animate: true,
       direction: 'forward'

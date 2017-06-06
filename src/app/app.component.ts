@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
-import { FirstRunPage } from '../pages/pages';
+//import { FirstRunPage } from '../pages/pages';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
@@ -21,6 +21,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { Settings } from '../providers/providers';
 
 import { TranslateService } from '@ngx-translate/core'
+
+import { Storage } from '@ionic/storage';
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -39,10 +41,10 @@ import { TranslateService } from '@ngx-translate/core'
     </ion-content>
 
   </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`
+  <ion-nav #content ></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  //rootPage = FirstRunPage;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -61,8 +63,17 @@ export class MyApp {
     { title: 'Search', component: SearchPage }
   ]
 
-  constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen, private storage: Storage) {
     this.initTranslate();
+
+    storage.get('doNotShowTutorial').then((val) => {
+         if(val){
+           this.nav.setRoot(WelcomePage);
+         }else{
+           this.nav.setRoot(TutorialPage);
+         }
+    });
+
   }
 
   ionViewDidLoad() {
