@@ -24,24 +24,11 @@ import { TranslateService } from '@ngx-translate/core'
 
 import { Storage } from '@ionic/storage';
 
+import { User } from '../providers/user';
+
+
 @Component({
-  template: `<ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
-        </button>
-      </ion-list>
-    </ion-content>
-
-  </ion-menu>
-  <ion-nav #content ></ion-nav>`
+  templateUrl: 'sidebar.html'
 })
 export class MyApp {
   //rootPage = FirstRunPage;
@@ -63,7 +50,10 @@ export class MyApp {
     { title: 'Search', component: SearchPage }
   ]
 
-  constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen, private storage: Storage) {
+  constructor(private translate: TranslateService, private platform: Platform,
+              settings: Settings, private config: Config, private statusBar: StatusBar,
+              private splashScreen: SplashScreen, private storage: Storage,
+              public user: User) {
     this.initTranslate();
 
     storage.get('doNotShowTutorial').then((val) => {
@@ -106,4 +96,9 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  logout(){
+    this.user.logout();
+  }
+
 }

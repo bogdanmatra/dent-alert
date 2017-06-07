@@ -68,5 +68,6 @@
 
 
   "DENTIST": "Dentist",
-  "PACIENT": "Patient"
+  "PACIENT": "Patient",
+  "LOG_OUT": "Log out"
 }

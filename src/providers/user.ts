@@ -31,7 +31,9 @@ export class User {
   _user: any;
 
   constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
-    afAuth.authState.subscribe((user: firebase.User) => this._user = user);
+    afAuth.authState.subscribe((user: firebase.User) => {
+      this._user = user
+    });
   }
 
   /**
@@ -61,7 +63,7 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
-    this._user = null;
+    this.afAuth.auth.signOut();
   }
 
   /**
