@@ -69,5 +69,7 @@
 
   "DENTIST": "Dentist",
   "PACIENT": "Pacient",
-  "LOG_OUT": "Deconectați-vă"
+  "LOG_OUT": "Deconectați-vă",
+  "PASSWORD_REPEAT": "Repetă parola",
+  "PASSWORD_MATCH": "Parolele nu sunt indentice."
 }

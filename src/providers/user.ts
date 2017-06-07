@@ -53,7 +53,7 @@ export class User {
       .then((response)=>{
         var uuid: string = response.uid;
         var newUser: FirebaseObjectObservable<any> = db.object('/users/' + uuid + "/");
-        var newUserData =  { name: accountInfo.name };
+        var newUserData =  { name: accountInfo.name, role: accountInfo.type };
         newUser.set(newUserData);
         // TODO resolve when new promise is resolved
       })

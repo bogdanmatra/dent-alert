@@ -69,5 +69,7 @@
 
   "DENTIST": "Dentist",
   "PACIENT": "Patient",
-  "LOG_OUT": "Log out"
+  "LOG_OUT": "Log out",
+  "PASSWORD_REPEAT": "Repeat password"
+  "PASSWORD_MATCH": "Passwords do not match."
 }
