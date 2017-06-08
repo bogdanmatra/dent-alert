@@ -10,7 +10,7 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" logged-in="{{p.loggedIn}}">
         {{p.title}}
       </button>
-      <button logged-in="true" full ion-button (click)="logout()">{{ 'LOG_OUT' | translate }}</button>
+      <button logged-in="pacient doctor" full ion-button (click)="logout()">{{ 'LOG_OUT' | translate }}</button>
     </ion-list>
   </ion-content>
 

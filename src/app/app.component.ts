@@ -34,15 +34,15 @@ export class MyApp {
 
   pages: any[] = [
     { title: 'Tutorial', component: TutorialPage },
-    { title: 'Welcome', component: WelcomePage, loggedIn: false  },
-    { title: 'Tabs', component: TabsPage, loggedIn: true  },
-    { title: 'Cards', component: CardsPage, loggedIn: true  },
-    { title: 'Content', component: ContentPage, loggedIn: true  },
-    { title: 'Map', component: MapPage, loggedIn: true  },
-    { title: 'Master Detail', component: ListMasterPage, loggedIn: true  },
-    { title: 'Menu', component: MenuPage, loggedIn: true  },
-    { title: 'Settings', component: SettingsPage, loggedIn: true  },
-    { title: 'Search', component: SearchPage, loggedIn: true  }
+    { title: 'Welcome', component: WelcomePage, loggedIn: false },
+    { title: 'Tabs', component: TabsPage, loggedIn: "doctor"  },
+    { title: 'Cards', component: CardsPage, loggedIn: "doctor"  },
+    { title: 'Content', component: ContentPage, loggedIn: "doctor"  },
+    { title: 'Map', component: MapPage, loggedIn: "doctor"  },
+    { title: 'Master Detail', component: ListMasterPage, loggedIn: "doctor"  },
+    { title: 'Menu', component: MenuPage, loggedIn: "pacient"  },
+    { title: 'Settings', component: SettingsPage, loggedIn: "pacient"  },
+    { title: 'Search', component: SearchPage, loggedIn: "pacient"  }
   ]
 
   constructor(private translate: TranslateService, private platform: Platform,
@@ -53,8 +53,8 @@ export class MyApp {
 
     storage.get('doNotShowTutorial').then((val) => {
       if (val) {
-        user.userChanged().subscribe(() => {
-          if (user.getUser()) {
+        user.getUser().subscribe((user) => {
+          if (user) {
             this.nav.setRoot(TabsPage);
           } else {
             this.nav.setRoot(WelcomePage);

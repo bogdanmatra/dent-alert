@@ -49,17 +49,21 @@ export class TutorialPage {
   startApp() {
     this.storage.set('doNotShowTutorial', true);
 
-    if (this.user.getUser()) {
-      this.navCtrl.setRoot(TabsPage, {}, {
-        animate: true,
-        direction: 'forward'
-      });
-    } else {
-      this.navCtrl.setRoot(WelcomePage, {}, {
-        animate: true,
-        direction: 'forward'
-      });
-    }
+    this.user.getUser().subscribe((user) => {
+      if (user) {
+        this.navCtrl.setRoot(TabsPage, {}, {
+          animate: true,
+          direction: 'forward'
+        });
+      } else {
+        this.navCtrl.setRoot(WelcomePage, {}, {
+          animate: true,
+          direction: 'forward'
+        });
+      }
+    });
+
+
   }
 
   onSlideChangeStart(slider) {

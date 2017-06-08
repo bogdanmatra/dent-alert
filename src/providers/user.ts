@@ -42,7 +42,7 @@ export class User {
       if (result.user) {
         // Facebook users are automatically marked as 'pacient'.
         // TODO Dentists will require special licence to sign up (after paying the subscription/ trial code).
-        // TODO skip save name when user already has a name.
+        // TODO Skip save name when user already has a name.
         self._saveUserAdditionalInformation(result.user.uid, { name: result.user.displayName, type: 'pacient'});
       }
     });
@@ -88,15 +88,15 @@ export class User {
   /**
    * User state changed.
    */
-  userChanged() : Observable<firebase.User>  {
+  getUser() : Observable<firebase.User>  {
     return this.afAuth.authState;
   }
 
   /**
-   * Get current user.
+   * Get current user details.
    */
-  getUser()  {
-    return this._user;
+  getUserDetails(uuid: string)  {
+    return this.db.object('/users/' + uuid + "/");
   }
 
   _saveUserAdditionalInformation(uuid: string, accountInfo) {

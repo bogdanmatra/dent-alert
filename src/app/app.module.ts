@@ -38,7 +38,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { environment } from '../providers/firebase';
 
-import { HasRole } from '../directives/hasrole'
 import { LoggedIn } from '../directives/loggedin'
 
 
@@ -68,8 +67,7 @@ export function provideSettings(storage: Storage) {
  * Directives.
  */
 let directives = [
-  LoggedIn,
-  HasRole
+  LoggedIn
 ]
 
 /**
