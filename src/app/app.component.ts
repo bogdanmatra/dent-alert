@@ -52,15 +52,17 @@ export class MyApp {
     this.initTranslate();
 
     storage.get('doNotShowTutorial').then((val) => {
-         if (val) {
-           if (this.user.getUser()) {
-             this.nav.setRoot(TabsPage);
-           } else {
-             this.nav.setRoot(WelcomePage);
-           }
-         } else {
-           this.nav.setRoot(TutorialPage);
-         }
+      if (val) {
+        user.userChanged().subscribe(() => {
+          if (user.getUser()) {
+            this.nav.setRoot(TabsPage);
+          } else {
+            this.nav.setRoot(WelcomePage);
+          }
+        });
+      } else {
+        this.nav.setRoot(TutorialPage);
+      }
     });
 
   }

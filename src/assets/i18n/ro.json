@@ -71,5 +71,6 @@
   "PACIENT": "Pacient",
   "LOG_OUT": "Deconectați-vă",
   "PASSWORD_REPEAT": "Repetă parola",
-  "PASSWORD_MATCH": "Parolele nu sunt indentice."
+  "PASSWORD_MATCH": "Parolele nu sunt indentice.",
+  "SIGNUP_FACEBOOK": "Înscrieți-vă cu Facebook"
 }

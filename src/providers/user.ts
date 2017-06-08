@@ -35,27 +35,45 @@ export class User {
     afAuth.authState.subscribe((user: firebase.User) => {
       this._user = user
     });
+
+    // Facebook redirect handler, save additional info from Facebook after redirect;
+    var self = this;
+    afAuth.auth.getRedirectResult().then(function(result) {
+      if (result.user) {
+        // Facebook users are automatically marked as 'pacient'.
+        // TODO Dentists will require special licence to sign up (after paying the subscription/ trial code).
+        // TODO skip save name when user already has a name.
+        self._saveUserAdditionalInformation(result.user.uid, { name: result.user.displayName, type: 'pacient'});
+      }
+    });
   }
 
   /**
-   * Send Firebase auth request
+   * Send Firebase login request
    */
   login(accountInfo: any) {
     return this.afAuth.auth.signInWithEmailAndPassword(accountInfo.email, accountInfo.password);
   }
 
   /**
-   * Send a POST request to our signup endpoint with the data
-   * the user entered on the form.
+   * Sign up with facebook
+   */
+  signUpWithFacebook() {
+    var provider = new firebase.auth.FacebookAuthProvider();
+    return this.afAuth.auth.signInWithRedirect(provider).then((result)=>{
+      console.log(result);
+    });
+  }
+
+  /**
+   * Send Firebase sign up request
    */
   signup(accountInfo: any) {
-    var db = this.db;
+
     return this.afAuth.auth.createUserWithEmailAndPassword(accountInfo.email, accountInfo.password)
       .then((response)=>{
         var uuid: string = response.uid;
-        var newUser: FirebaseObjectObservable<any> = db.object('/users/' + uuid + "/");
-        var newUserData =  { name: accountInfo.name, role: accountInfo.type };
-        newUser.set(newUserData);
+        this._saveUserAdditionalInformation(uuid, accountInfo);
         // TODO resolve when new promise is resolved
       })
   }
@@ -79,6 +97,12 @@ export class User {
    */
   getUser()  {
     return this._user;
+  }
+
+  _saveUserAdditionalInformation(uuid: string, accountInfo) {
+    var newUser: FirebaseObjectObservable<any> = this.db.object('/users/' + uuid + "/");
+    var newUserData =  { name: accountInfo.name, role: accountInfo.type };
+    newUser.set(newUserData);
   }
 
 }
