@@ -25,3 +25,20 @@ Excluded from Github.
 <a href="https://console.firebase.google.com/project/dent-alert/overview"> Firebase console</a>
 <br>
 <a href="https://ionicframework.com/docs/"> Ionic Docs </a>
+
+## Frequently used in terminal
+ionic serve -> start server, live reload (dev mode)
+<br>
+ionic cordova run ios
+<br>
+ionic cordova run android
+
+In order to update mobile app properties (config.xml) the platform must be removed and added again:
+<br><br>
+ionic cordova rm ios
+<br>
+ionic cordova add ios
+<br><br>
+ionic cordova rm android
+<br>
+ionic cordova add android
