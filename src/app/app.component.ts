@@ -6,14 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
-//import { FirstRunPage } from '../pages/pages';
 import { ListMasterPage } from '../pages/list-master/list-master';
-import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
-import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -37,17 +34,15 @@ export class MyApp {
 
   pages: any[] = [
     { title: 'Tutorial', component: TutorialPage },
-    { title: 'Welcome', component: WelcomePage },
-    { title: 'Tabs', component: TabsPage },
-    { title: 'Cards', component: CardsPage },
-    { title: 'Content', component: ContentPage },
-    { title: 'Login', component: LoginPage },
-    { title: 'Signup', component: SignupPage },
-    { title: 'Map', component: MapPage },
-    { title: 'Master Detail', component: ListMasterPage },
-    { title: 'Menu', component: MenuPage },
-    { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage }
+    { title: 'Welcome', component: WelcomePage, loggedIn: false  },
+    { title: 'Tabs', component: TabsPage, loggedIn: true  },
+    { title: 'Cards', component: CardsPage, loggedIn: true  },
+    { title: 'Content', component: ContentPage, loggedIn: true  },
+    { title: 'Map', component: MapPage, loggedIn: true  },
+    { title: 'Master Detail', component: ListMasterPage, loggedIn: true  },
+    { title: 'Menu', component: MenuPage, loggedIn: true  },
+    { title: 'Settings', component: SettingsPage, loggedIn: true  },
+    { title: 'Search', component: SearchPage, loggedIn: true  }
   ]
 
   constructor(private translate: TranslateService, private platform: Platform,
@@ -57,9 +52,13 @@ export class MyApp {
     this.initTranslate();
 
     storage.get('doNotShowTutorial').then((val) => {
-         if(val){
-           this.nav.setRoot(WelcomePage);
-         }else{
+         if (val) {
+           if (this.user.getUser()) {
+             this.nav.setRoot(TabsPage);
+           } else {
+             this.nav.setRoot(WelcomePage);
+           }
+         } else {
            this.nav.setRoot(TutorialPage);
          }
     });
@@ -99,6 +98,7 @@ export class MyApp {
 
   logout(){
     this.user.logout();
+    this.nav.setRoot(WelcomePage);
   }
 
 }
