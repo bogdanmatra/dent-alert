@@ -1,7 +1,10 @@
-# The Ionic Super Starter 🎮
+# Dent Alert - Based on The Ionic Super Starter 🎮
 
 <img src="resources/icon.png" width="400" />
 
+Dentist's app, chat with your patients, schedule appointments.
+<br>
+<br>
 The Ionic Super Starter is a batteries-included starter project for Ionic apps complete with pre-built pages, providers, and best practices for Ionic development.
 
 ## On top of Ionic super starter (add to list as it builds up)
