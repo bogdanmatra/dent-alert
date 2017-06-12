@@ -38,6 +38,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { environment } from '../providers/firebase';
 
+import { LoggedIn } from '../directives/loggedin'
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -61,6 +63,12 @@ export function provideSettings(storage: Storage) {
   });
 }
 
+/**
+ * Directives.
+ */
+let directives = [
+  LoggedIn
+]
 
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -86,7 +94,10 @@ let pages = [
 ];
 
 export function declarations() {
-  return pages;
+  let declarations = [];
+  declarations.push(pages);
+  declarations.push(directives);
+  return declarations;
 }
 
 export function entryComponents() {

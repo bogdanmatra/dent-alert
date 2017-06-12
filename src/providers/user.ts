@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import {Observable} from "rxjs/Observable";
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -31,28 +32,48 @@ export class User {
   _user: any;
 
   constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
-    afAuth.authState.subscribe((user: firebase.User) => this._user = user);
+    afAuth.authState.subscribe((user: firebase.User) => {
+      this._user = user
+    });
+
+    // Facebook redirect handler, save additional info from Facebook after redirect;
+    var self = this;
+    afAuth.auth.getRedirectResult().then(function(result) {
+      if (result.user) {
+        // Facebook users are automatically marked as 'pacient'.
+        // TODO Dentists will require special licence to sign up (after paying the subscription/ trial code).
+        // TODO Skip save name when user already has a name.
+        self._saveUserAdditionalInformation(result.user.uid, { name: result.user.displayName, type: 'pacient'});
+      }
+    });
   }
 
   /**
-   * Send Firebase auth request
+   * Send Firebase login request
    */
   login(accountInfo: any) {
     return this.afAuth.auth.signInWithEmailAndPassword(accountInfo.email, accountInfo.password);
   }
 
   /**
-   * Send a POST request to our signup endpoint with the data
-   * the user entered on the form.
+   * Sign up with facebook
+   */
+  signUpWithFacebook() {
+    var provider = new firebase.auth.FacebookAuthProvider();
+    return this.afAuth.auth.signInWithRedirect(provider).then((result)=>{
+      console.log(result);
+    });
+  }
+
+  /**
+   * Send Firebase sign up request
    */
   signup(accountInfo: any) {
-    var db = this.db;
+
     return this.afAuth.auth.createUserWithEmailAndPassword(accountInfo.email, accountInfo.password)
       .then((response)=>{
         var uuid: string = response.uid;
-        var newUser: FirebaseObjectObservable<any> = db.object('/users/' + uuid + "/");
-        var newUserData =  { name: accountInfo.name };
-        newUser.set(newUserData);
+        this._saveUserAdditionalInformation(uuid, accountInfo);
         // TODO resolve when new promise is resolved
       })
   }
@@ -61,13 +82,27 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
-    this._user = null;
+    this.afAuth.auth.signOut();
   }
 
   /**
-   * Process a login/signup response to store user data
+   * User state changed.
    */
-  _loggedIn(resp) {
-    this._user = resp.user;
+  getUser() : Observable<firebase.User>  {
+    return this.afAuth.authState;
   }
+
+  /**
+   * Get current user details.
+   */
+  getUserDetails(uuid: string)  {
+    return this.db.object('/users/' + uuid + "/");
+  }
+
+  _saveUserAdditionalInformation(uuid: string, accountInfo) {
+    var newUser: FirebaseObjectObservable<any> = this.db.object('/users/' + uuid + "/");
+    var newUserData =  { name: accountInfo.name, role: accountInfo.type };
+    newUser.set(newUserData);
+  }
+
 }

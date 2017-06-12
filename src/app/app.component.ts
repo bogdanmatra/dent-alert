@@ -6,14 +6,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
+<<<<<<< HEAD
 //import { FirstRunPage } from '../pages/pages';
+=======
+>>>>>>> 9b919a3acef25778f37f6d3e8266294d860a10ed
 import { ListMasterPage } from '../pages/list-master/list-master';
-import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
-import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -24,6 +25,7 @@ import { TranslateService } from '@ngx-translate/core'
 
 import { Storage } from '@ionic/storage';
 
+<<<<<<< HEAD
 @Component({
   template: `<ion-menu [content]="content">
     <ion-header>
@@ -42,6 +44,13 @@ import { Storage } from '@ionic/storage';
 
   </ion-menu>
   <ion-nav #content ></ion-nav>`
+=======
+import { User } from '../providers/user';
+
+
+@Component({
+  templateUrl: 'sidebar.html'
+>>>>>>> 9b919a3acef25778f37f6d3e8266294d860a10ed
 })
 export class MyApp {
   //rootPage = FirstRunPage;
@@ -50,19 +59,18 @@ export class MyApp {
 
   pages: any[] = [
     { title: 'Tutorial', component: TutorialPage },
-    { title: 'Welcome', component: WelcomePage },
-    { title: 'Tabs', component: TabsPage },
-    { title: 'Cards', component: CardsPage },
-    { title: 'Content', component: ContentPage },
-    { title: 'Login', component: LoginPage },
-    { title: 'Signup', component: SignupPage },
-    { title: 'Map', component: MapPage },
-    { title: 'Master Detail', component: ListMasterPage },
-    { title: 'Menu', component: MenuPage },
-    { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage }
+    { title: 'Welcome', component: WelcomePage, loggedIn: false },
+    { title: 'Tabs', component: TabsPage, loggedIn: "doctor"  },
+    { title: 'Cards', component: CardsPage, loggedIn: "doctor"  },
+    { title: 'Content', component: ContentPage, loggedIn: "doctor"  },
+    { title: 'Map', component: MapPage, loggedIn: "doctor"  },
+    { title: 'Master Detail', component: ListMasterPage, loggedIn: "doctor"  },
+    { title: 'Menu', component: MenuPage, loggedIn: "pacient"  },
+    { title: 'Settings', component: SettingsPage, loggedIn: "pacient"  },
+    { title: 'Search', component: SearchPage, loggedIn: "pacient"  }
   ]
 
+<<<<<<< HEAD
   constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen, private storage: Storage) {
     this.initTranslate();
 
@@ -72,6 +80,26 @@ export class MyApp {
          }else{
            this.nav.setRoot(TutorialPage);
          }
+=======
+  constructor(private translate: TranslateService, private platform: Platform,
+              settings: Settings, private config: Config, private statusBar: StatusBar,
+              private splashScreen: SplashScreen, private storage: Storage,
+              public user: User) {
+    this.initTranslate();
+
+    storage.get('doNotShowTutorial').then((val) => {
+      if (val) {
+        user.getUser().subscribe((user) => {
+          if (user) {
+            this.nav.setRoot(TabsPage);
+          } else {
+            this.nav.setRoot(WelcomePage);
+          }
+        });
+      } else {
+        this.nav.setRoot(TutorialPage);
+      }
+>>>>>>> 9b919a3acef25778f37f6d3e8266294d860a10ed
     });
 
   }
@@ -106,4 +134,10 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  logout(){
+    this.user.logout();
+    this.nav.setRoot(WelcomePage);
+  }
+
 }
