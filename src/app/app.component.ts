@@ -6,10 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
-<<<<<<< HEAD
-//import { FirstRunPage } from '../pages/pages';
-=======
->>>>>>> 9b919a3acef25778f37f6d3e8266294d860a10ed
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
@@ -25,35 +21,13 @@ import { TranslateService } from '@ngx-translate/core'
 
 import { Storage } from '@ionic/storage';
 
-<<<<<<< HEAD
-@Component({
-  template: `<ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
-        </button>
-      </ion-list>
-    </ion-content>
-
-  </ion-menu>
-  <ion-nav #content ></ion-nav>`
-=======
 import { User } from '../providers/user';
 
 
 @Component({
   templateUrl: 'sidebar.html'
->>>>>>> 9b919a3acef25778f37f6d3e8266294d860a10ed
 })
 export class MyApp {
-  //rootPage = FirstRunPage;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -70,17 +44,7 @@ export class MyApp {
     { title: 'Search', component: SearchPage, loggedIn: "pacient"  }
   ]
 
-<<<<<<< HEAD
-  constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen, private storage: Storage) {
-    this.initTranslate();
 
-    storage.get('doNotShowTutorial').then((val) => {
-         if(val){
-           this.nav.setRoot(WelcomePage);
-         }else{
-           this.nav.setRoot(TutorialPage);
-         }
-=======
   constructor(private translate: TranslateService, private platform: Platform,
               settings: Settings, private config: Config, private statusBar: StatusBar,
               private splashScreen: SplashScreen, private storage: Storage,
@@ -99,7 +63,6 @@ export class MyApp {
       } else {
         this.nav.setRoot(TutorialPage);
       }
->>>>>>> 9b919a3acef25778f37f6d3e8266294d860a10ed
     });
 
   }
