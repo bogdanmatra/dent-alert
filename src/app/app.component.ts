@@ -39,9 +39,9 @@ export class MyApp {
     { title: 'Content', component: ContentPage, loggedIn: "doctor"  },
     { title: 'Map', component: MapPage, loggedIn: "doctor"  },
     { title: 'Master Detail', component: ListMasterPage, loggedIn: "doctor"  },
-    { title: 'Menu', component: MenuPage, loggedIn: "pacient"  },
-    { title: 'Settings', component: SettingsPage, loggedIn: "pacient"  },
-    { title: 'Search', component: SearchPage, loggedIn: "pacient"  }
+    { title: 'Menu', component: MenuPage, loggedIn: "patient"  },
+    { title: 'Settings', component: SettingsPage, loggedIn: "patient"  },
+    { title: 'Search', component: SearchPage, loggedIn: "patient"  }
   ]
 
 

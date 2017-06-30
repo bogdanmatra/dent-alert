@@ -40,10 +40,10 @@ export class User {
     var self = this;
     afAuth.auth.getRedirectResult().then(function(result) {
       if (result.user) {
-        // Facebook users are automatically marked as 'pacient'.
+        // Facebook users are automatically marked as 'patient'.
         // TODO Dentists will require special licence to sign up (after paying the subscription/ trial code).
         // TODO Skip save name when user already has a name.
-        self._saveUserAdditionalInformation(result.user.uid, { name: result.user.displayName, type: 'pacient'});
+        self._saveUserAdditionalInformation(result.user.uid, { name: result.user.displayName, type: 'patient'});
       }
     });
   }
