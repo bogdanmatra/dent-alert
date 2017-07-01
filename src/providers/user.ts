@@ -7,7 +7,6 @@ import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Observable";
-
 /**
  * Most apps have the concept of a User. This is a simple provider
  * with stubs for login/signup/etc.
@@ -86,9 +85,16 @@ export class User {
   }
 
   /**
+   * User logged in.
+   */
+  isLoggedIn() : boolean  {
+    return (this._user !== null) ;
+  }
+
+  /**
    * User state changed.
    */
-  getUser() : Observable<firebase.User>  {
+  getUserChanged() : Observable<firebase.User>  {
     return this.afAuth.authState;
   }
 

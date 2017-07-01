@@ -53,13 +53,11 @@ export class MyApp {
 
     storage.get('doNotShowTutorial').then((val) => {
       if (val) {
-        user.getUser().subscribe((user) => {
-          if (user) {
+          if (user.isLoggedIn()) {
             this.nav.setRoot(TabsPage);
           } else {
             this.nav.setRoot(WelcomePage);
           }
-        });
       } else {
         this.nav.setRoot(TutorialPage);
       }
@@ -71,7 +69,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleBlackTranslucent();
+      this.statusBar.styleBlackOpaque();
       this.splashScreen.hide();
     });
   }
@@ -100,7 +98,6 @@ export class MyApp {
 
   logout(){
     this.user.logout();
-    this.nav.setRoot(WelcomePage);
   }
 
 }

@@ -13,7 +13,7 @@ export class LoggedIn {
     this.el = el;
 
 
-    user.getUser().subscribe((firebaseUser) => {
+    user.getUserChanged().subscribe((firebaseUser) => {
       if (firebaseUser) {
         user.getUserDetails(firebaseUser.uid).subscribe((response) => {
           this.resetDisplay(this.loggedIn.indexOf(response.role) > -1);

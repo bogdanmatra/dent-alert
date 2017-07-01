@@ -48,9 +48,7 @@ export class TutorialPage {
 
   startApp() {
     this.storage.set('doNotShowTutorial', true);
-
-    this.user.getUser().subscribe((user) => {
-      if (user) {
+      if (this.user.isLoggedIn()) {
         this.navCtrl.setRoot(TabsPage, {}, {
           animate: true,
           direction: 'forward'
@@ -61,9 +59,6 @@ export class TutorialPage {
           direction: 'forward'
         });
       }
-    });
-
-
   }
 
   onSlideChangeStart(slider) {
